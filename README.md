@@ -2,7 +2,7 @@
   <img src=".assets/banner.png" width="100%" alt="libft banner" />
 
   <p>
-    <b>A from-scratch reimplementation of the C standard library — the dependency every later 42 project builds on.</b>
+    <b>A from-scratch reimplementation of the C standard library, the dependency every later 42 project builds on.</b>
   </p>
 
   <p>
@@ -13,19 +13,20 @@
   </p>
 
   <p>
-    <a href="#overview">Overview</a> •
-    <a href="#highlights">Highlights</a> •
-    <a href="#build--usage">Build & Usage</a> •
-    <a href="#design-notes">Design Notes</a> •
-    <a href="#library-structure">Library Structure</a> •
-    <a href="#function-reference">Function Reference</a> •
-    <a href="#result">Result</a>
+    <a href="#overview"><img src="https://img.shields.io/badge/-Overview-2b3137?style=flat-square" alt="Overview" /></a>
+    <a href="#highlights"><img src="https://img.shields.io/badge/-Highlights-2b3137?style=flat-square" alt="Highlights" /></a>
+    <a href="#build--usage"><img src="https://img.shields.io/badge/-Build%20%26%20Usage-2b3137?style=flat-square" alt="Build & Usage" /></a>
+    <a href="#design-notes"><img src="https://img.shields.io/badge/-Design%20Notes-2b3137?style=flat-square" alt="Design Notes" /></a>
+    <a href="#library-structure"><img src="https://img.shields.io/badge/-Library%20Structure-2b3137?style=flat-square" alt="Library Structure" /></a>
+    <a href="#function-reference"><img src="https://img.shields.io/badge/-Function%20Reference-2b3137?style=flat-square" alt="Function Reference" /></a>
+    <a href="#result"><img src="https://img.shields.io/badge/-Result-2b3137?style=flat-square" alt="Result" /></a>
   </p>
 </div>
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
-## Overview
+<a name="overview"></a>
+<h2 align="center">Overview</h2>
 
 <div align="center">
 
@@ -39,18 +40,20 @@ The interesting part isn't reimplementing the easy 90% — it's the edge cases: 
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
-## Highlights
+<a name="highlights"></a>
+<h2 align="center">Highlights</h2>
 
-Four things this library is strict about, on top of just "reimplementing the standard library":
+`libft` isn't just "reimplement the man pages" — the subject enforces a set of constraints that make the exercise harder than it looks:
 
-- **56 functions, one per file** — character, string, memory, conversion, and output primitives, split exactly as the Norm requires.
-- **Zero warnings, zero shortcuts** — `-Wall -Wextra -Werror`, no `for` loops, one instruction per line.
-- **No leaks, ever** — every allocator handles `malloc` failure without leaking what it already grabbed.
-- **`get_next_line` + `ft_printf` built in** — not bolted on afterward, first-class parts of the library.
+- **56 functions, fully scoped** — character classification, string manipulation, memory management, conversions, and fd-based output, split one function per file exactly as the Norm requires.
+- **Zero tolerance for warnings or shortcuts** — the whole library compiles clean under `-Wall -Wextra -Werror`, with no `for` loops and one instruction per line allowed.
+- **Every allocation is leak-checked at the failure path** — not just the happy path: if a `malloc` fails midway through building a string or a list, whatever was already allocated gets freed before returning `NULL`.
+- **`get_next_line` and `ft_printf` are first-class citizens** — folded into the library from the start rather than bolted on as an afterthought, since almost every later project depends on both.
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
-## Build & Usage
+<a name="build--usage"></a>
+<h2 align="center">Build & Usage</h2>
 
 ```bash
 make        # builds libft.a (mandatory part + get_next_line + printf helper)
@@ -72,7 +75,8 @@ cc main.c -Ipath/to/libft -Lpath/to/libft -lft -o program
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
-## Design Notes
+<a name="design-notes"></a>
+<h2 align="center">Design Notes</h2>
 
 `libft` is where several recurring 42 constraints first show up, and they shape how every function is written.
 
@@ -90,7 +94,8 @@ cc main.c -Ipath/to/libft -Lpath/to/libft -lft -o program
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
-## Library Structure
+<a name="library-structure"></a>
+<h2 align="center">Library Structure</h2>
 
 ```text
 LIBFT/
@@ -106,7 +111,8 @@ LIBFT/
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
-## Function Reference
+<a name="function-reference"></a>
+<h2 align="center">Function Reference</h2>
 
 <div align="center">
 
@@ -126,7 +132,7 @@ LIBFT/
 <summary><b>Character classification</b></summary>
 
 | Function | Purpose |
-|:---|:---|
+|:---:|:---|
 | [`ft_isalpha`](ft_isalpha.c) | Alphabetic character check |
 | [`ft_isdigit`](ft_isdigit.c) | Decimal digit check |
 | [`ft_isalnum`](ft_isalnum.c) | Alphanumeric check |
@@ -140,7 +146,7 @@ LIBFT/
 <summary><b>String manipulation</b></summary>
 
 | Function | Purpose |
-|:---|:---|
+|:---:|:---|
 | [`ft_strlen`](ft_strlen.c) | String length |
 | [`ft_strlcpy`](ft_strlcpy.c) | Bounded copy, BSD-style return value |
 | [`ft_strlcat`](ft_strlcat.c) | Bounded concatenation, BSD-style return value |
@@ -161,7 +167,7 @@ LIBFT/
 <summary><b>Memory management</b></summary>
 
 | Function | Purpose |
-|:---|:---|
+|:---:|:---|
 | [`ft_memset`](ft_memset.c) | Fill a memory area with a byte value |
 | [`ft_bzero`](ft_bzero.c) | Zero a memory area |
 | [`ft_memcpy`](ft_memcpy.c) | Copy a non-overlapping memory area |
@@ -176,7 +182,7 @@ LIBFT/
 <summary><b>Conversions</b></summary>
 
 | Function | Purpose |
-|:---|:---|
+|:---:|:---|
 | [`ft_atoi`](ft_atoi.c) | String to `int` |
 | [`ft_atol`](ft_atol.c) | String to `long` |
 | [`ft_itoa`](ft_itoa.c) | `int` to a heap-allocated string |
@@ -188,7 +194,7 @@ LIBFT/
 <summary><b>Output (file-descriptor based)</b></summary>
 
 | Function | Purpose |
-|:---|:---|
+|:---:|:---|
 | [`ft_putchar_fd`](ft_putchar_fd.c) | Write a character |
 | [`ft_putstr_fd`](ft_putstr_fd.c) | Write a string |
 | [`ft_putendl_fd`](ft_putendl_fd.c) | Write a string followed by `\n` |
@@ -204,7 +210,7 @@ LIBFT/
 <summary><b>Linked list (bonus)</b></summary>
 
 | Function | Purpose |
-|:---|:---|
+|:---:|:---|
 | [`ft_lstnew`](ft_lstnew_bonus.c) | Allocate a new node |
 | [`ft_lstadd_front`](ft_lstadd_front_bonus.c) / [`ft_lstadd_back`](ft_lstadd_back_bonus.c) | Insert at the head / tail |
 | [`ft_lstsize`](ft_lstsize_bonus.c) | Count nodes |
@@ -220,7 +226,7 @@ LIBFT/
 <summary><b>Extras (beyond the subject)</b></summary>
 
 | Function | Purpose |
-|:---|:---|
+|:---:|:---|
 | [`ft_swap`](ft_swap.c) | Swap two integers |
 | [`ft_split_free`](ft_split_free.c) | Free a `NULL`-terminated array produced by `ft_split` |
 | [`get_next_line`](GNL/get_next_line.c) | Read a file descriptor line by line ([separate 42 project](../GNL)) |
@@ -230,10 +236,11 @@ LIBFT/
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
-## Skills Developed
+<a name="skills-developed"></a>
+<h2 align="center">Skills Developed</h2>
 
 | Learning Outcome | Piscine Skill Area |
-|---|---|
+|:---|:---:|
 | C fundamentals: pointers, arrays, string handling | Algorithms & AI |
 | Manual memory management and leak-free allocation patterns | Imperative Programming |
 | Reimplementing standard-library contracts precisely | Unix |
@@ -241,7 +248,8 @@ LIBFT/
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
-## Result
+<a name="result"></a>
+<h2 align="center">Result</h2>
 
 <div align="center">
   <img src=".assets/Note.png" alt="libft grade" width="220px" />
