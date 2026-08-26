@@ -41,17 +41,12 @@ The interesting part isn't reimplementing the easy 90% — it's the edge cases: 
 
 ## Highlights
 
-<div align="center">
+Four things this library is strict about, on top of just "reimplementing the standard library":
 
-**56 functions, one per file** — character, string, memory, conversion, and output primitives, split exactly as the Norm requires.
-
-**Zero warnings, zero shortcuts** — `-Wall -Wextra -Werror`, no `for` loops, one instruction per line.
-
-**No leaks, ever** — every allocator handles `malloc` failure without leaking what it already grabbed.
-
-**`get_next_line` + `ft_printf` built in** — not bolted on afterward, first-class parts of the library.
-
-</div>
+- **56 functions, one per file** — character, string, memory, conversion, and output primitives, split exactly as the Norm requires.
+- **Zero warnings, zero shortcuts** — `-Wall -Wextra -Werror`, no `for` loops, one instruction per line.
+- **No leaks, ever** — every allocator handles `malloc` failure without leaking what it already grabbed.
+- **`get_next_line` + `ft_printf` built in** — not bolted on afterward, first-class parts of the library.
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
@@ -97,33 +92,23 @@ cc main.c -Ipath/to/libft -Lpath/to/libft -lft -o program
 
 ## Library Structure
 
-| File | Role |
-| --- | --- |
-| [`libft.h`](libft.h) | Public header — prototypes, includes, and the `t_list` struct |
-| [`Makefile`](Makefile) | Build rules (`all`, `bonus`, `clean`, `fclean`, `re`) |
-| `ft_*.c` | One function per file, as required by the Norm |
-| [`GNL/`](GNL) | `get_next_line`, developed as a separate 42 project and folded in here |
-
-<details>
-<summary>Full project tree</summary>
-
 ```text
 LIBFT/
-├── libft.h                    # Public header
+├── libft.h                    # Public header — prototypes, includes, the t_list struct
 ├── Makefile                   # all / bonus / clean / fclean / re
 ├── ft_*.c                     # 56 files, one function each — see Function Reference below
-├── GNL/
+├── GNL/                       # get_next_line, a separate 42 project folded in here
 │   ├── get_next_line.c
 │   ├── get_next_line_bonus.c
 │   └── get_next_line_utils.c
-└── .assets/                   # Subject PDF, icon, grade screenshot
+└── .assets/                   # Subject PDF, banner, grade screenshot
 ```
-
-</details>
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
 ## Function Reference
+
+<div align="center">
 
 | Category | Functions | Example |
 | --- | :---: | --- |
@@ -135,7 +120,9 @@ LIBFT/
 | Linked list (bonus) | 9 | `ft_lstmap` |
 | Extras (beyond the subject) | 4 | `get_next_line` |
 
-<details>
+</div>
+
+<details open>
 <summary><b>Character classification</b></summary>
 
 | Function | Purpose |
@@ -149,7 +136,7 @@ LIBFT/
 
 </details>
 
-<details>
+<details open>
 <summary><b>String manipulation</b></summary>
 
 | Function | Purpose |
@@ -170,7 +157,7 @@ LIBFT/
 
 </details>
 
-<details>
+<details open>
 <summary><b>Memory management</b></summary>
 
 | Function | Purpose |
@@ -185,7 +172,7 @@ LIBFT/
 
 </details>
 
-<details>
+<details open>
 <summary><b>Conversions</b></summary>
 
 | Function | Purpose |
@@ -197,7 +184,7 @@ LIBFT/
 
 </details>
 
-<details>
+<details open>
 <summary><b>Output (file-descriptor based)</b></summary>
 
 | Function | Purpose |
@@ -213,7 +200,7 @@ LIBFT/
 
 </details>
 
-<details>
+<details open>
 <summary><b>Linked list (bonus)</b></summary>
 
 | Function | Purpose |
@@ -229,7 +216,7 @@ LIBFT/
 
 </details>
 
-<details>
+<details open>
 <summary><b>Extras (beyond the subject)</b></summary>
 
 | Function | Purpose |
