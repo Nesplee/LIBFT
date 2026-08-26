@@ -132,7 +132,7 @@ LIBFT/
 <summary><img src=".assets/divider.png" width="68%" alt="" /> <b>Character classification</b></summary>
 
 <table width="100%">
-<tr><th width="26%">Function</th><th>Purpose</th></tr>
+<tr><th width="26%">Function</th><th>Purpose<img src=".assets/spacer.png" width="900" height="1" alt="" /></th></tr>
 <tr><td align="center"><a href="ft_isalpha.c"><code>ft_isalpha</code></a></td><td>Alphabetic character check</td></tr>
 <tr><td align="center"><a href="ft_isdigit.c"><code>ft_isdigit</code></a></td><td>Decimal digit check</td></tr>
 <tr><td align="center"><a href="ft_isalnum.c"><code>ft_isalnum</code></a></td><td>Alphanumeric check</td></tr>
@@ -146,7 +146,7 @@ LIBFT/
 <summary><img src=".assets/divider.png" width="68%" alt="" /> <b>String manipulation</b></summary>
 
 <table width="100%">
-<tr><th width="26%">Function</th><th>Purpose</th></tr>
+<tr><th width="26%">Function</th><th>Purpose<img src=".assets/spacer.png" width="900" height="1" alt="" /></th></tr>
 <tr><td align="center"><a href="ft_strlen.c"><code>ft_strlen</code></a></td><td>String length</td></tr>
 <tr><td align="center"><a href="ft_strlcpy.c"><code>ft_strlcpy</code></a></td><td>Bounded copy, BSD-style return value</td></tr>
 <tr><td align="center"><a href="ft_strlcat.c"><code>ft_strlcat</code></a></td><td>Bounded concatenation, BSD-style return value</td></tr>
@@ -167,7 +167,7 @@ LIBFT/
 <summary><img src=".assets/divider.png" width="68%" alt="" /> <b>Memory management</b></summary>
 
 <table width="100%">
-<tr><th width="26%">Function</th><th>Purpose</th></tr>
+<tr><th width="26%">Function</th><th>Purpose<img src=".assets/spacer.png" width="900" height="1" alt="" /></th></tr>
 <tr><td align="center"><a href="ft_memset.c"><code>ft_memset</code></a></td><td>Fill a memory area with a byte value</td></tr>
 <tr><td align="center"><a href="ft_bzero.c"><code>ft_bzero</code></a></td><td>Zero a memory area</td></tr>
 <tr><td align="center"><a href="ft_memcpy.c"><code>ft_memcpy</code></a></td><td>Copy a non-overlapping memory area</td></tr>
@@ -182,7 +182,7 @@ LIBFT/
 <summary><img src=".assets/divider.png" width="68%" alt="" /> <b>Conversions</b></summary>
 
 <table width="100%">
-<tr><th width="26%">Function</th><th>Purpose</th></tr>
+<tr><th width="26%">Function</th><th>Purpose<img src=".assets/spacer.png" width="900" height="1" alt="" /></th></tr>
 <tr><td align="center"><a href="ft_atoi.c"><code>ft_atoi</code></a></td><td>String to <code>int</code></td></tr>
 <tr><td align="center"><a href="ft_atol.c"><code>ft_atol</code></a></td><td>String to <code>long</code></td></tr>
 <tr><td align="center"><a href="ft_itoa.c"><code>ft_itoa</code></a></td><td><code>int</code> to a heap-allocated string</td></tr>
@@ -194,7 +194,7 @@ LIBFT/
 <summary><img src=".assets/divider.png" width="55%" alt="" /> <b>Output (file-descriptor based)</b></summary>
 
 <table width="100%">
-<tr><th width="26%">Function</th><th>Purpose</th></tr>
+<tr><th width="26%">Function</th><th>Purpose<img src=".assets/spacer.png" width="900" height="1" alt="" /></th></tr>
 <tr><td align="center"><a href="ft_putchar_fd.c"><code>ft_putchar_fd</code></a></td><td>Write a character</td></tr>
 <tr><td align="center"><a href="ft_putstr_fd.c"><code>ft_putstr_fd</code></a></td><td>Write a string</td></tr>
 <tr><td align="center"><a href="ft_putendl_fd.c"><code>ft_putendl_fd</code></a></td><td>Write a string followed by <code>\n</code></td></tr>
@@ -210,7 +210,7 @@ LIBFT/
 <summary><img src=".assets/divider.png" width="68%" alt="" /> <b>Linked list (bonus)</b></summary>
 
 <table width="100%">
-<tr><th width="26%">Function</th><th>Purpose</th></tr>
+<tr><th width="26%">Function</th><th>Purpose<img src=".assets/spacer.png" width="900" height="1" alt="" /></th></tr>
 <tr><td align="center"><a href="ft_lstnew_bonus.c"><code>ft_lstnew</code></a></td><td>Allocate a new node</td></tr>
 <tr><td align="center"><a href="ft_lstadd_front_bonus.c"><code>ft_lstadd_front</code></a> / <a href="ft_lstadd_back_bonus.c"><code>ft_lstadd_back</code></a></td><td>Insert at the head / tail</td></tr>
 <tr><td align="center"><a href="ft_lstsize_bonus.c"><code>ft_lstsize</code></a></td><td>Count nodes</td></tr>
@@ -226,7 +226,7 @@ LIBFT/
 <summary><img src=".assets/divider.png" width="55%" alt="" /> <b>Extras (beyond the subject)</b></summary>
 
 <table width="100%">
-<tr><th width="26%">Function</th><th>Purpose</th></tr>
+<tr><th width="26%">Function</th><th>Purpose<img src=".assets/spacer.png" width="900" height="1" alt="" /></th></tr>
 <tr><td align="center"><a href="ft_swap.c"><code>ft_swap</code></a></td><td>Swap two integers</td></tr>
 <tr><td align="center"><a href="ft_split_free.c"><code>ft_split_free</code></a></td><td>Free a <code>NULL</code>-terminated array produced by <code>ft_split</code></td></tr>
 <tr><td align="center"><a href="GNL/get_next_line.c"><code>get_next_line</code></a></td><td>Read a file descriptor line by line (<a href="https://github.com/Nesplee/GNL">separate 42 project</a>)</td></tr>
