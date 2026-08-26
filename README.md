@@ -13,38 +13,49 @@
   </p>
 
   <p>
-    <a href="#-overview">Overview</a> •
-    <a href="#-highlights">Highlights</a> •
-    <a href="#-build--usage">Build & Usage</a> •
-    <a href="#-design-notes">Design Notes</a> •
-    <a href="#-library-structure">Library Structure</a> •
-    <a href="#-function-reference">Function Reference</a> •
-    <a href="#-result">Result</a>
+    <a href="#overview">Overview</a> •
+    <a href="#highlights">Highlights</a> •
+    <a href="#build--usage">Build & Usage</a> •
+    <a href="#design-notes">Design Notes</a> •
+    <a href="#library-structure">Library Structure</a> •
+    <a href="#function-reference">Function Reference</a> •
+    <a href="#result">Result</a>
   </p>
 </div>
 
----
+<img src=".assets/divider.png" width="100%" alt="" />
 
-## 💡 Overview
+## Overview
+
+<div align="center">
 
 No `strlen`, no `malloc` wrapper, no `memcpy` — just the man pages and a blank file. `libft` rebuilds the core of `string.h`, `stdlib.h`, and `ctype.h` byte by byte, then adds a linked-list toolkit and a `printf` engine on top. Every later project in this repo links against it.
 
 The interesting part isn't reimplementing the easy 90% — it's the edge cases: what `strlcpy` returns versus what it actually copies, how `memmove` has to reason about overlapping memory instead of just looping, why `atoi` has to eat leading whitespace and a sign before it sees a digit. All of it under `-Wall -Wextra -Werror`, zero warnings tolerated.
 
-> **[📖 Read the full subject](.assets/Libft.en.pdf)**
+**[Read the full subject](.assets/Libft.en.pdf)**
 
----
+</div>
 
-## ✨ Highlights
+<img src=".assets/divider.png" width="100%" alt="" />
 
-- 🧱 **90+ functions, one per file** — character, string, memory, conversion, and output primitives, split exactly as the Norm requires.
-- 🛡️ **Zero warnings, zero shortcuts** — `-Wall -Wextra -Werror`, no `for` loops, one instruction per line.
-- 💾 **No leaks, ever** — every allocator handles `malloc` failure without leaking what it already grabbed.
-- 🔗 **`get_next_line` + `ft_printf` built in** — not bolted on afterward, first-class parts of the library.
+## Highlights
 
----
+<div align="center">
 
-## 🚀 Build & Usage
+**56 functions, one per file** — character, string, memory, conversion, and output primitives, split exactly as the Norm requires.
+
+**Zero warnings, zero shortcuts** — `-Wall -Wextra -Werror`, no `for` loops, one instruction per line.
+
+**No leaks, ever** — every allocator handles `malloc` failure without leaking what it already grabbed.
+
+**`get_next_line` + `ft_printf` built in** — not bolted on afterward, first-class parts of the library.
+
+</div>
+
+<img src=".assets/divider.png" width="100%" alt="" />
+
+## Build & Usage
 
 ```bash
 make        # builds libft.a (mandatory part + get_next_line + printf helper)
@@ -64,9 +75,9 @@ To use the library in another project:
 cc main.c -Ipath/to/libft -Lpath/to/libft -lft -o program
 ```
 
----
+<img src=".assets/divider.png" width="100%" alt="" />
 
-## 🧠 Design Notes
+## Design Notes
 
 `libft` is where several recurring 42 constraints first show up, and they shape how every function is written.
 
@@ -82,25 +93,25 @@ cc main.c -Ipath/to/libft -Lpath/to/libft -lft -o program
 > [!NOTE]
 > **BSD-style return values.** `ft_strlcpy`/`ft_strlcat` return the length they *would have needed*, not the length they wrote — mirroring the real `strlcpy`/`strlcat` contract so truncation can be detected by the caller.
 
----
+<img src=".assets/divider.png" width="100%" alt="" />
 
-## 🏗️ Library Structure
+## Library Structure
 
-| File               | Role                                                                    |
-| ------------------ | ------------------------------------------------------------------------ |
-| [`libft.h`](libft.h)     | Public header — prototypes, includes, and the `t_list` struct            |
-| [`Makefile`](Makefile)   | Build rules (`all`, `bonus`, `clean`, `fclean`, `re`)                     |
-| `ft_*.c`            | One function per file, as required by the Norm                           |
-| [`GNL/`](GNL)            | `get_next_line`, developed as a separate 42 project and folded in here   |
+| File | Role |
+| --- | --- |
+| [`libft.h`](libft.h) | Public header — prototypes, includes, and the `t_list` struct |
+| [`Makefile`](Makefile) | Build rules (`all`, `bonus`, `clean`, `fclean`, `re`) |
+| `ft_*.c` | One function per file, as required by the Norm |
+| [`GNL/`](GNL) | `get_next_line`, developed as a separate 42 project and folded in here |
 
 <details>
-<summary>📂 Full project tree</summary>
+<summary>Full project tree</summary>
 
 ```text
 LIBFT/
 ├── libft.h                    # Public header
 ├── Makefile                   # all / bonus / clean / fclean / re
-├── ft_*.c                     # 60 files, one function each — see Function Reference below
+├── ft_*.c                     # 56 files, one function each — see Function Reference below
 ├── GNL/
 │   ├── get_next_line.c
 │   ├── get_next_line_bonus.c
@@ -110,12 +121,22 @@ LIBFT/
 
 </details>
 
----
+<img src=".assets/divider.png" width="100%" alt="" />
 
-## 📚 Function Reference
+## Function Reference
+
+| Category | Functions | Example |
+| --- | :---: | --- |
+| Character classification | 6 | `ft_isalpha` |
+| String manipulation | 15 | `ft_strdup` |
+| Memory management | 7 | `ft_memmove` |
+| Conversions | 5 | `ft_itoa` |
+| Output (fd-based) | 10 | `ft_putnbr_fd` |
+| Linked list (bonus) | 9 | `ft_lstmap` |
+| Extras (beyond the subject) | 4 | `get_next_line` |
 
 <details>
-<summary><b>🔍 Character classification</b></summary>
+<summary><b>Character classification</b></summary>
 
 | Function | Purpose |
 |:---|:---|
@@ -129,7 +150,7 @@ LIBFT/
 </details>
 
 <details>
-<summary><b>📝 String manipulation</b></summary>
+<summary><b>String manipulation</b></summary>
 
 | Function | Purpose |
 |:---|:---|
@@ -150,7 +171,7 @@ LIBFT/
 </details>
 
 <details>
-<summary><b>💾 Memory management</b></summary>
+<summary><b>Memory management</b></summary>
 
 | Function | Purpose |
 |:---|:---|
@@ -165,7 +186,7 @@ LIBFT/
 </details>
 
 <details>
-<summary><b>🔄 Conversions</b></summary>
+<summary><b>Conversions</b></summary>
 
 | Function | Purpose |
 |:---|:---|
@@ -177,7 +198,7 @@ LIBFT/
 </details>
 
 <details>
-<summary><b>📤 Output (file-descriptor based)</b></summary>
+<summary><b>Output (file-descriptor based)</b></summary>
 
 | Function | Purpose |
 |:---|:---|
@@ -193,7 +214,7 @@ LIBFT/
 </details>
 
 <details>
-<summary><b>🔗 Linked list (bonus)</b></summary>
+<summary><b>Linked list (bonus)</b></summary>
 
 | Function | Purpose |
 |:---|:---|
@@ -209,7 +230,7 @@ LIBFT/
 </details>
 
 <details>
-<summary><b>✨ Extras (beyond the subject)</b></summary>
+<summary><b>Extras (beyond the subject)</b></summary>
 
 | Function | Purpose |
 |:---|:---|
@@ -220,9 +241,9 @@ LIBFT/
 
 </details>
 
----
+<img src=".assets/divider.png" width="100%" alt="" />
 
-## 🎓 Skills Developed
+## Skills Developed
 
 | Learning Outcome | Piscine Skill Area |
 |---|---|
@@ -231,9 +252,9 @@ LIBFT/
 | Reimplementing standard-library contracts precisely | Unix |
 | Working under a strict style checker (Norm) and a zero-warning build | Rigor |
 
----
+<img src=".assets/divider.png" width="100%" alt="" />
 
-## 🏁 Result
+## Result
 
 <div align="center">
   <img src=".assets/Note.png" alt="libft grade" width="220px" />
@@ -241,7 +262,7 @@ LIBFT/
   <sup><i>Validated on October 11, 2024 — ~70 hours</i></sup>
 </div>
 
----
+<img src=".assets/divider.png" width="100%" alt="" />
 
 <div align="center">
 
