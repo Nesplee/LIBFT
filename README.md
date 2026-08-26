@@ -1,31 +1,50 @@
 <div align="center">
+  <img src=".assets/banner.png" width="100%" alt="libft banner" />
 
-<img src=".assets/banner.png" alt="libft" width="100%"/>
+  <p>
+    <b>A from-scratch reimplementation of the C standard library — the dependency every later 42 project builds on.</b>
+  </p>
 
-[![42](https://img.shields.io/badge/42-Lausanne-000000?style=for-the-badge&logo=42&logoColor=white)](https://42lausanne.ch)
-[![Norm](https://img.shields.io/badge/Norminette-passing-2ea44f?style=for-the-badge)]()
-[![Language](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)]()
-[![Grade](https://img.shields.io/badge/grade-125%2F100-5ec8c5?style=for-the-badge)]()
+  <p>
+    <a href="https://42lausanne.ch"><img src="https://img.shields.io/badge/42-Lausanne-000000?style=for-the-badge&logo=42&logoColor=white" alt="42 Lausanne" /></a>
+    <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C" />
+    <img src="https://img.shields.io/badge/Norminette-passing-2ea44f?style=for-the-badge" alt="Norm passing" />
+    <img src="https://img.shields.io/badge/grade-125%2F100-5ec8c5?style=for-the-badge" alt="Grade 125/100" />
+  </p>
 
+  <p>
+    <a href="#-overview">Overview</a> •
+    <a href="#-highlights">Highlights</a> •
+    <a href="#-build--usage">Build & Usage</a> •
+    <a href="#-design-notes">Design Notes</a> •
+    <a href="#-library-structure">Library Structure</a> •
+    <a href="#-function-reference">Function Reference</a> •
+    <a href="#-result">Result</a>
+  </p>
 </div>
 
-## Overview
+---
 
-`libft` is the foundational project of the 42 common core. The goal is to reimplement a subset of the C standard library (`string.h`, `stdlib.h`, `ctype.h`) from first principles, then extend it with original helpers that make later projects easier to write. Every project after this one is expected to link against it.
+## 💡 Overview
 
-Working through libft forces a close reading of how the standard library actually behaves at the edges — what `strlcpy` returns versus what it copies, how `memmove` has to handle overlapping regions, why `atoi` needs to accept leading whitespace and a sign — and translating that behavior into C that compiles cleanly under `-Wall -Wextra -Werror` and passes 42's Norm style checker (no `for` loops, one instruction per line, a strict function-length limit, and so on).
+No `strlen`, no `malloc` wrapper, no `memcpy` — just the man pages and a blank file. `libft` rebuilds the core of `string.h`, `stdlib.h`, and `ctype.h` byte by byte, then adds a linked-list toolkit and a `printf` engine on top. Every later project in this repo links against it.
 
-📖&nbsp; **[Read the full subject](.assets/Libft.en.pdf)**
+The interesting part isn't reimplementing the easy 90% — it's the edge cases: what `strlcpy` returns versus what it actually copies, how `memmove` has to reason about overlapping memory instead of just looping, why `atoi` has to eat leading whitespace and a sign before it sees a digit. All of it under `-Wall -Wextra -Werror`, zero warnings tolerated.
 
-| Cursus | Category | Norm | Duration |
-|---|---|---|---|
-| 42 Common Core | Algorithms · Unix | `-Wall -Wextra -Werror` | ~70 hours |
+> **[📖 Read the full subject](.assets/Libft.en.pdf)**
 
-## Table of Contents
+---
 
-[Build & Usage](#build--usage) · [Library Structure](#library-structure) · [Function Reference](#function-reference) · [Design Notes](#design-notes) · [Skills Developed](#skills-developed) · [Result](#result)
+## ✨ Highlights
 
-## Build & Usage
+- 🧱 **90+ functions, one per file** — character, string, memory, conversion, and output primitives, split exactly as the Norm requires.
+- 🛡️ **Zero warnings, zero shortcuts** — `-Wall -Wextra -Werror`, no `for` loops, one instruction per line.
+- 💾 **No leaks, ever** — every allocator handles `malloc` failure without leaking what it already grabbed.
+- 🔗 **`get_next_line` + `ft_printf` built in** — not bolted on afterward, first-class parts of the library.
+
+---
+
+## 🚀 Build & Usage
 
 ```bash
 make        # builds libft.a (mandatory part + get_next_line + printf helper)
@@ -45,18 +64,57 @@ To use the library in another project:
 cc main.c -Ipath/to/libft -Lpath/to/libft -lft -o program
 ```
 
-## Library Structure
+---
 
-| File | Role |
-|---|---|
-| [`libft.h`](libft.h) | Public header: prototypes, includes, and the `t_list` struct |
-| [`Makefile`](Makefile) | Build rules (`all`, `bonus`, `clean`, `fclean`, `re`) |
-| `ft_*.c` | One function per file, as required by the Norm |
-| [`GNL/`](GNL) | `get_next_line`, developed as a separate 42 project and folded in here |
+## 🧠 Design Notes
 
-## Function Reference
+`libft` is where several recurring 42 constraints first show up, and they shape how every function is written.
 
-<details open>
+> [!NOTE]
+> **No `for` loops.** The Norm only allows `while`, which changes how iteration and index bookkeeping are structured throughout the library.
+
+> [!IMPORTANT]
+> **One `malloc` per resource, one matching `free`.** Any function that allocates (`ft_strdup`, `ft_split`, `ft_substr`, `ft_lstnew`, ...) must also handle the failure path (`malloc` returning `NULL`) without leaking whatever it already allocated — this is where `ft_split_free` and the list's destructor callbacks come from.
+
+> [!TIP]
+> **Overlap safety in `ft_memmove`.** `ft_memcpy` assumes non-overlapping regions (as the standard allows); `ft_memmove` has to detect overlap and copy in the right direction to stay correct — reasoning about memory layout rather than just "copying bytes."
+
+> [!NOTE]
+> **BSD-style return values.** `ft_strlcpy`/`ft_strlcat` return the length they *would have needed*, not the length they wrote — mirroring the real `strlcpy`/`strlcat` contract so truncation can be detected by the caller.
+
+---
+
+## 🏗️ Library Structure
+
+| File               | Role                                                                    |
+| ------------------ | ------------------------------------------------------------------------ |
+| [`libft.h`](libft.h)     | Public header — prototypes, includes, and the `t_list` struct            |
+| [`Makefile`](Makefile)   | Build rules (`all`, `bonus`, `clean`, `fclean`, `re`)                     |
+| `ft_*.c`            | One function per file, as required by the Norm                           |
+| [`GNL/`](GNL)            | `get_next_line`, developed as a separate 42 project and folded in here   |
+
+<details>
+<summary>📂 Full project tree</summary>
+
+```text
+LIBFT/
+├── libft.h                    # Public header
+├── Makefile                   # all / bonus / clean / fclean / re
+├── ft_*.c                     # 60 files, one function each — see Function Reference below
+├── GNL/
+│   ├── get_next_line.c
+│   ├── get_next_line_bonus.c
+│   └── get_next_line_utils.c
+└── .assets/                   # Subject PDF, icon, grade screenshot
+```
+
+</details>
+
+---
+
+## 📚 Function Reference
+
+<details>
 <summary><b>🔍 Character classification</b></summary>
 
 | Function | Purpose |
@@ -162,16 +220,9 @@ cc main.c -Ipath/to/libft -Lpath/to/libft -lft -o program
 
 </details>
 
-## Design Notes
+---
 
-`libft` is where several recurring 42 constraints first show up, and they shape how every function is written:
-
-- **No `for` loops.** The Norm only allows `while`, which changes how iteration and index bookkeeping are structured.
-- **One `malloc` per resource, one matching `free`.** Any function that allocates (`ft_strdup`, `ft_split`, `ft_substr`, `ft_lstnew`, ...) must also handle the failure path (`malloc` returning `NULL`) without leaking whatever it already allocated — this is where `ft_split_free` and the list's destructor callbacks come from.
-- **Overlap safety.** `ft_memcpy` assumes non-overlapping regions (as the standard allows); `ft_memmove` has to detect overlap and copy in the right direction to stay correct, which is a good exercise in reasoning about memory layout rather than just "copying bytes."
-- **BSD-style return values.** `ft_strlcpy`/`ft_strlcat` return the length they *would have needed*, not the length they wrote — mirroring the real `strlcpy`/`strlcat` contract so truncation can be detected by the caller.
-
-## Skills Developed
+## 🎓 Skills Developed
 
 | Learning Outcome | Piscine Skill Area |
 |---|---|
@@ -180,8 +231,20 @@ cc main.c -Ipath/to/libft -Lpath/to/libft -lft -o program
 | Reimplementing standard-library contracts precisely | Unix |
 | Working under a strict style checker (Norm) and a zero-warning build | Rigor |
 
-## Result
+---
 
-<img src=".assets/Note.png" alt="libft grade" width="220px"/>
+## 🏁 Result
 
-**Validated on October 11, 2024 — ~70 hours**
+<div align="center">
+  <img src=".assets/Note.png" alt="libft grade" width="220px" />
+  <br/>
+  <sup><i>Validated on October 11, 2024 — ~70 hours</i></sup>
+</div>
+
+---
+
+<div align="center">
+
+<sub>42 Lausanne — Common Core</sub>
+
+</div>
