@@ -13,13 +13,13 @@
   </p>
 
   <p>
-    <a href="#overview"><img src="https://img.shields.io/badge/-Overview-2b3137?style=flat-square" alt="Overview" /></a>
-    <a href="#highlights"><img src="https://img.shields.io/badge/-Highlights-2b3137?style=flat-square" alt="Highlights" /></a>
-    <a href="#build--usage"><img src="https://img.shields.io/badge/-Build%20%26%20Usage-2b3137?style=flat-square" alt="Build & Usage" /></a>
-    <a href="#design-notes"><img src="https://img.shields.io/badge/-Design%20Notes-2b3137?style=flat-square" alt="Design Notes" /></a>
-    <a href="#library-structure"><img src="https://img.shields.io/badge/-Library%20Structure-2b3137?style=flat-square" alt="Library Structure" /></a>
-    <a href="#function-reference"><img src="https://img.shields.io/badge/-Function%20Reference-2b3137?style=flat-square" alt="Function Reference" /></a>
-    <a href="#result"><img src="https://img.shields.io/badge/-Result-2b3137?style=flat-square" alt="Result" /></a>
+    <img src="https://img.shields.io/badge/-Overview-2b3137?style=flat-square" alt="Overview" />
+    <img src="https://img.shields.io/badge/-Highlights-2b3137?style=flat-square" alt="Highlights" />
+    <img src="https://img.shields.io/badge/-Build%20%26%20Usage-2b3137?style=flat-square" alt="Build & Usage" />
+    <img src="https://img.shields.io/badge/-Design%20Notes-2b3137?style=flat-square" alt="Design Notes" />
+    <img src="https://img.shields.io/badge/-Library%20Structure-2b3137?style=flat-square" alt="Library Structure" />
+    <img src="https://img.shields.io/badge/-Function%20Reference-2b3137?style=flat-square" alt="Function Reference" />
+    <img src="https://img.shields.io/badge/-Result-2b3137?style=flat-square" alt="Result" />
   </p>
 </div>
 
@@ -89,8 +89,8 @@ cc main.c -Ipath/to/libft -Lpath/to/libft -lft -o program
 > [!TIP]
 > **Overlap safety in `ft_memmove`.** `ft_memcpy` assumes non-overlapping regions (as the standard allows); `ft_memmove` has to detect overlap and copy in the right direction to stay correct, reasoning about memory layout rather than just "copying bytes."
 
-> [!NOTE]
-> **BSD-style return values.** `ft_strlcpy`/`ft_strlcat` return the length they *would have needed*, not the length they wrote. This mirrors the real `strlcpy`/`strlcat` contract so truncation can be detected by the caller.
+> [!WARNING]
+> **BSD-style return values.** `ft_strlcpy`/`ft_strlcat` return the length they *would have needed*, not the length they wrote. Treat the return value as the actual copied length and you'll read past the buffer; this mirrors the real `strlcpy`/`strlcat` contract so truncation can be detected by the caller.
 
 <img src=".assets/divider.png" width="100%" alt="" />
 
