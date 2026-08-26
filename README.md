@@ -1,137 +1,187 @@
 <div align="center">
 
-# 📚 LIBFT - My Very First Own Library of Functions 📚
+<img src=".assets/banner.png" alt="libft" width="100%"/>
+
+[![42](https://img.shields.io/badge/42-Lausanne-000000?style=for-the-badge&logo=42&logoColor=white)](https://42lausanne.ch)
+[![Norm](https://img.shields.io/badge/Norminette-passing-2ea44f?style=for-the-badge)]()
+[![Language](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)]()
+[![Grade](https://img.shields.io/badge/grade-125%2F100-5ec8c5?style=for-the-badge)]()
 
 </div>
 
-<div align="center">
-  <img src=".assets/Illu_Libft.jpg" alt="LIBFT Illustration" width="100%"/>
+## Overview
 
-### *Of course you'll need it!* 💡
-</div>
+`libft` is the foundational project of the 42 common core. The goal is to reimplement a subset of the C standard library (`string.h`, `stdlib.h`, `ctype.h`) from first principles, then extend it with original helpers that make later projects easier to write. Every project after this one is expected to link against it.
 
-<div align="center">
+Working through libft forces a close reading of how the standard library actually behaves at the edges — what `strlcpy` returns versus what it copies, how `memmove` has to handle overlapping regions, why `atoi` needs to accept leading whitespace and a sign — and translating that behavior into C that compiles cleanly under `-Wall -Wextra -Werror` and passes 42's Norm style checker (no `for` loops, one instruction per line, a strict function-length limit, and so on).
 
-## 🎯 ABOUT 🎯
+📖&nbsp; **[Read the full subject](.assets/Libft.en.pdf)**
 
-This project is the first step of my journey at 42Lausanne, after succeeding the Piscine.
-Libft is a fundamental project that we'll build and use throughout the cursus. It consists of coding basic C functions and assembling them to create my first library.
+| Cursus | Category | Norm | Duration |
+|---|---|---|---|
+| 42 Common Core | Algorithms · Unix | `-Wall -Wextra -Werror` | ~70 hours |
 
-#### 📖 [Read the subject here](.assets/Libft.en.pdf)
+## Table of Contents
 
-</div>
+[Build & Usage](#build--usage) · [Library Structure](#library-structure) · [Function Reference](#function-reference) · [Design Notes](#design-notes) · [Skills Developed](#skills-developed) · [Result](#result)
 
-<div align="center">
+## Build & Usage
 
-# 📚 LIBFT Functions Categories
+```bash
+make        # builds libft.a (mandatory part + get_next_line + printf helper)
+make bonus  # also builds the linked-list functions
+make clean  # removes object files
+make fclean # removes object files and libft.a
+make re     # fclean + all
+```
 
-</div>
+To use the library in another project:
 
-### 0. Header File 📎
-- [`libft.h`](libft.h) - Main header file containing all function prototypes and necessary includes
+```c
+#include "libft.h"
+```
 
-### 1. Character Testing Functions 🔍
-- [`ft_isalpha`](ft_isalpha.c) - Check if character is alphabetic
-- [`ft_isdigit`](ft_isdigit.c) - Check if character is digit
-- [`ft_isalnum`](ft_isalnum.c) - Check if character is alphanumeric
-- [`ft_isascii`](ft_isascii.c) - Check if character is ASCII
-- [`ft_isprint`](ft_isprint.c) - Check if character is printable
-- [`ft_isnumber`](ft_isnumber.c) - Check if string is numeric
+```bash
+cc main.c -Ipath/to/libft -Lpath/to/libft -lft -o program
+```
 
+## Library Structure
 
-### 2. String Manipulation Functions 📝
-- [`ft_strlen`](ft_strlen.c) - Get string length
-- [`ft_strlcpy`](ft_strlcpy.c) - Copy string with size limit
-- [`ft_strlcat`](ft_strlcat.c) - Concatenate strings with size limit
-- [`ft_strchr`](ft_strchr.c) - Find first occurrence of character
-- [`ft_strrchr`](ft_strrchr.c) - Find last occurrence of character
-- [`ft_strncmp`](ft_strncmp.c) - Compare n characters of strings
-- [`ft_strcmp`](ft_strcmp.c) - Compare strings
-- [`ft_strnstr`](ft_strnstr.c) - Find substring with length limit
-- [`ft_strdup`](ft_strdup.c) - Duplicate string
-- [`ft_substr`](ft_substr.c) - Extract substring
-- [`ft_strjoin`](ft_strjoin.c) - Join two strings
-- [`ft_strtrim`](ft_strtrim.c) - Trim characters from string
-- [`ft_split`](ft_split.c) - Split string into array
-- [`ft_strmapi`](ft_strmapi.c) - Map function to string
-- [`ft_striteri`](ft_striteri.c) - Iterate through string
+| File | Role |
+|---|---|
+| [`libft.h`](libft.h) | Public header: prototypes, includes, and the `t_list` struct |
+| [`Makefile`](Makefile) | Build rules (`all`, `bonus`, `clean`, `fclean`, `re`) |
+| `ft_*.c` | One function per file, as required by the Norm |
+| [`GNL/`](GNL) | `get_next_line`, developed as a separate 42 project and folded in here |
 
-### 3. Memory Management Functions 💾
-- [`ft_memset`](ft_memset.c) - Fill memory with constant byte
-- [`ft_bzero`](ft_bzero.c) - Zero out memory
-- [`ft_memcpy`](ft_memcpy.c) - Copy memory area
-- [`ft_memmove`](ft_memmove.c) - Move memory area
-- [`ft_memchr`](ft_memchr.c) - Find byte in memory
-- [`ft_memcmp`](ft_memcmp.c) - Compare memory areas
-- [`ft_calloc`](ft_calloc.c) - Allocate and zero memory
+## Function Reference
 
-### 4. Conversion Functions 🔄
-- [`ft_atoi`](ft_atoi.c) - Convert string to integer
-- [`ft_atol`](ft_atol.c) - Convert string to long
-- [`ft_itoa`](ft_itoa.c) - Convert integer to string
-- [`ft_tolower`](ft_tolower.c) - Convert to lowercase
-- [`ft_toupper`](ft_toupper.c) - Convert to uppercase
+<details open>
+<summary><b>🔍 Character classification</b></summary>
 
-### 5. Output Functions 📤
-- [`ft_putchar`](ft_putchar.c) - Output character
-- [`ft_putchar_fd`](ft_putchar_fd.c) - Output character to fd
-- [`ft_putstr`](ft_putstr.c) - Output string
-- [`ft_putstr_fd`](ft_putstr_fd.c) - Output string to fd
-- [`ft_putendl_fd`](ft_putendl_fd.c) - Output string with newline to fd
-- [`ft_putnbr`](ft_putnbr.c) - Output number
-- [`ft_putnbr_fd`](ft_putnbr_fd.c) - Output number to fd
-- [`ft_putunbr`](ft_putunbr.c) - Output unsigned number
-- [`ft_puthex`](ft_puthex.c) - Output hexadecimal
-- [`ft_putptr`](ft_putptr.c) - Output pointer
+| Function | Purpose |
+|:---|:---|
+| [`ft_isalpha`](ft_isalpha.c) | Alphabetic character check |
+| [`ft_isdigit`](ft_isdigit.c) | Decimal digit check |
+| [`ft_isalnum`](ft_isalnum.c) | Alphanumeric check |
+| [`ft_isascii`](ft_isascii.c) | 7-bit ASCII range check |
+| [`ft_isprint`](ft_isprint.c) | Printable character check |
+| [`ft_isnumber`](ft_isnumber.c) | Whether a whole string represents a number |
 
-### 6. Linked List Functions (Bonus) 🔗
-- [`ft_lstnew`](ft_lstnew_bonus.c) - Create new list node
-- [`ft_lstadd_front`](ft_lstadd_front_bonus.c) - Add node at front
-- [`ft_lstadd_back`](ft_lstadd_back_bonus.c) - Add node at back
-- [`ft_lstsize`](ft_lstsize_bonus.c) - Get list size
-- [`ft_lstlast`](ft_lstlast_bonus.c) - Get last node
-- [`ft_lstdelone`](ft_lstdelone_bonus.c) - Delete single node
-- [`ft_lstclear`](ft_lstclear_bonus.c) - Delete list
-- [`ft_lstiter`](ft_lstiter_bonus.c) - Iterate through list
-- [`ft_lstmap`](ft_lstmap_bonus.c) - Map function to list
+</details>
 
-### 7. Utility Functions 🛠️
-- [`ft_swap`](ft_swap.c) - Swap two integers
-- [`ft_split_free`](ft_split_free.c) - Free split array
-- [`found_newline`](../found_newline.c) - Find newline in string
+<details>
+<summary><b>📝 String manipulation</b></summary>
 
-<div align="center">
+| Function | Purpose |
+|:---|:---|
+| [`ft_strlen`](ft_strlen.c) | String length |
+| [`ft_strlcpy`](ft_strlcpy.c) | Bounded copy, BSD-style return value |
+| [`ft_strlcat`](ft_strlcat.c) | Bounded concatenation, BSD-style return value |
+| [`ft_strchr`](ft_strchr.c) / [`ft_strrchr`](ft_strrchr.c) | First / last occurrence of a character |
+| [`ft_strncmp`](ft_strncmp.c) / [`ft_strcmp`](ft_strcmp.c) | Lexicographic comparison |
+| [`ft_strnstr`](ft_strnstr.c) | Bounded substring search |
+| [`ft_strdup`](ft_strdup.c) | Heap-allocated duplicate |
+| [`ft_substr`](ft_substr.c) | Extract a substring into a new allocation |
+| [`ft_strjoin`](ft_strjoin.c) | Concatenate two strings into a new allocation |
+| [`ft_strtrim`](ft_strtrim.c) | Trim a set of characters from both ends |
+| [`ft_split`](ft_split.c) | Split a string on a delimiter into a `NULL`-terminated array |
+| [`ft_strmapi`](ft_strmapi.c) | Apply a function to each character, index-aware, into a new string |
+| [`ft_striteri`](ft_striteri.c) | Apply a function to each character in place, index-aware |
 
-Note: Several functions were added to enhance the library beyond the project's requirements.
+</details>
 
-</div>
+<details>
+<summary><b>💾 Memory management</b></summary>
 
-<div align="center">
+| Function | Purpose |
+|:---|:---|
+| [`ft_memset`](ft_memset.c) | Fill a memory area with a byte value |
+| [`ft_bzero`](ft_bzero.c) | Zero a memory area |
+| [`ft_memcpy`](ft_memcpy.c) | Copy a non-overlapping memory area |
+| [`ft_memmove`](ft_memmove.c) | Copy a memory area, safe for overlap |
+| [`ft_memchr`](ft_memchr.c) | Find a byte in a memory area |
+| [`ft_memcmp`](ft_memcmp.c) | Compare two memory areas |
+| [`ft_calloc`](ft_calloc.c) | Allocate zero-initialized memory |
 
-## 🔍 Project Details
+</details>
 
-</div>
+<details>
+<summary><b>🔄 Conversions</b></summary>
 
-<div align="center">
-  <img src=".assets/Illu_Libft2.png" alt="LIBFT Details" width="300px"/>
-</div>
+| Function | Purpose |
+|:---|:---|
+| [`ft_atoi`](ft_atoi.c) | String to `int` |
+| [`ft_atol`](ft_atol.c) | String to `long` |
+| [`ft_itoa`](ft_itoa.c) | `int` to a heap-allocated string |
+| [`ft_tolower`](ft_tolower.c) / [`ft_toupper`](ft_toupper.c) | Case conversion |
 
-<div align="center">
+</details>
 
-| 🎯 Key Learning Outcomes | 🛠️ Skills Developed |
-|:------------------------|:-------------------|
-| • Deep understanding of C programming fundamentals<br>• Memory management mastery<br>• Data structures implementation<br>• Code optimization techniques<br>• Rigorous testing methodology | • Algorithms & AI<br>• Imperative Programming<br>• Unix<br>• Rigor |
+<details>
+<summary><b>📤 Output (file-descriptor based)</b></summary>
 
-### ⏰ Hours Spent: ~70 hours
+| Function | Purpose |
+|:---|:---|
+| [`ft_putchar_fd`](ft_putchar_fd.c) | Write a character |
+| [`ft_putstr_fd`](ft_putstr_fd.c) | Write a string |
+| [`ft_putendl_fd`](ft_putendl_fd.c) | Write a string followed by `\n` |
+| [`ft_putnbr_fd`](ft_putnbr_fd.c) | Write an `int` in base 10 |
+| `ft_putchar` / `ft_putstr` / `ft_putnbr` | Convenience wrappers writing to `stdout` |
+| [`ft_putunbr`](ft_putunbr.c) | Write an `unsigned int` |
+| [`ft_puthex`](ft_puthex.c) | Write a value in hexadecimal |
+| [`ft_putptr`](ft_putptr.c) | Write a pointer address |
 
-</div>
+</details>
 
-<div align="center">
+<details>
+<summary><b>🔗 Linked list (bonus)</b></summary>
 
-## ⭐ Results
+| Function | Purpose |
+|:---|:---|
+| [`ft_lstnew`](ft_lstnew_bonus.c) | Allocate a new node |
+| [`ft_lstadd_front`](ft_lstadd_front_bonus.c) / [`ft_lstadd_back`](ft_lstadd_back_bonus.c) | Insert at the head / tail |
+| [`ft_lstsize`](ft_lstsize_bonus.c) | Count nodes |
+| [`ft_lstlast`](ft_lstlast_bonus.c) | Return the last node |
+| [`ft_lstdelone`](ft_lstdelone_bonus.c) | Free one node with a custom destructor |
+| [`ft_lstclear`](ft_lstclear_bonus.c) | Free an entire list |
+| [`ft_lstiter`](ft_lstiter_bonus.c) | Apply a function to every node |
+| [`ft_lstmap`](ft_lstmap_bonus.c) | Build a new list by mapping a function over an existing one |
 
-<img src=".assets/Note.png" alt="LIBFT Grade" width="200px"/>
+</details>
 
-### Validated on October 11, 2024
+<details>
+<summary><b>✨ Extras (beyond the subject)</b></summary>
 
-</div>
+| Function | Purpose |
+|:---|:---|
+| [`ft_swap`](ft_swap.c) | Swap two integers |
+| [`ft_split_free`](ft_split_free.c) | Free a `NULL`-terminated array produced by `ft_split` |
+| [`get_next_line`](GNL/get_next_line.c) | Read a file descriptor line by line ([separate 42 project](../GNL)) |
+| [`ft_printf`](ft_printf.c) | Minimal `printf`-style formatter, precursor to the full [`ft_printf`](../FT_PRINTF) project |
+
+</details>
+
+## Design Notes
+
+`libft` is where several recurring 42 constraints first show up, and they shape how every function is written:
+
+- **No `for` loops.** The Norm only allows `while`, which changes how iteration and index bookkeeping are structured.
+- **One `malloc` per resource, one matching `free`.** Any function that allocates (`ft_strdup`, `ft_split`, `ft_substr`, `ft_lstnew`, ...) must also handle the failure path (`malloc` returning `NULL`) without leaking whatever it already allocated — this is where `ft_split_free` and the list's destructor callbacks come from.
+- **Overlap safety.** `ft_memcpy` assumes non-overlapping regions (as the standard allows); `ft_memmove` has to detect overlap and copy in the right direction to stay correct, which is a good exercise in reasoning about memory layout rather than just "copying bytes."
+- **BSD-style return values.** `ft_strlcpy`/`ft_strlcat` return the length they *would have needed*, not the length they wrote — mirroring the real `strlcpy`/`strlcat` contract so truncation can be detected by the caller.
+
+## Skills Developed
+
+| Learning Outcome | Piscine Skill Area |
+|---|---|
+| C fundamentals: pointers, arrays, string handling | Algorithms & AI |
+| Manual memory management and leak-free allocation patterns | Imperative Programming |
+| Reimplementing standard-library contracts precisely | Unix |
+| Working under a strict style checker (Norm) and a zero-warning build | Rigor |
+
+## Result
+
+<img src=".assets/Note.png" alt="libft grade" width="220px"/>
+
+**Validated on October 11, 2024 — ~70 hours**
