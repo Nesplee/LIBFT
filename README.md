@@ -130,7 +130,7 @@ LIBFT/
 
 <table width="100%">
 <tr><th width="26%">Function</th><th>Purpose</th></tr>
-<tr><td colspan="2" align="right"><img src="https://img.shields.io/badge/-Character%20Classification-63212a?style=flat" alt="Character classification" /></td></tr>
+<tr><td colspan="2" align="right"><table cellpadding="6" cellspacing="0" align="right"><tr><td><h4>Character Classification</h4></td></tr></table></td></tr>
 <tr><td align="center"><a href="ft_isalpha.c"><code>ft_isalpha</code></a></td><td>Alphabetic character check</td></tr>
 <tr><td align="center"><a href="ft_isdigit.c"><code>ft_isdigit</code></a></td><td>Decimal digit check</td></tr>
 <tr><td align="center"><a href="ft_isalnum.c"><code>ft_isalnum</code></a></td><td>Alphanumeric check</td></tr>
@@ -138,7 +138,7 @@ LIBFT/
 <tr><td align="center"><a href="ft_isprint.c"><code>ft_isprint</code></a></td><td>Printable character check</td></tr>
 <tr><td align="center"><a href="ft_isnumber.c"><code>ft_isnumber</code></a></td><td>Whether a whole string represents a number</td></tr>
 
-<tr><td colspan="2" align="right"><img src="https://img.shields.io/badge/-String%20Manipulation-63212a?style=flat" alt="String manipulation" /></td></tr>
+<tr><td colspan="2" align="right"><table cellpadding="6" cellspacing="0" align="right"><tr><td><h4>String Manipulation</h4></td></tr></table></td></tr>
 <tr><td align="center"><a href="ft_strlen.c"><code>ft_strlen</code></a></td><td>String length</td></tr>
 <tr><td align="center"><a href="ft_strlcpy.c"><code>ft_strlcpy</code></a></td><td>Bounded copy, BSD-style return value</td></tr>
 <tr><td align="center"><a href="ft_strlcat.c"><code>ft_strlcat</code></a></td><td>Bounded concatenation, BSD-style return value</td></tr>
@@ -153,7 +153,7 @@ LIBFT/
 <tr><td align="center"><a href="ft_strmapi.c"><code>ft_strmapi</code></a></td><td>Apply a function to each character, index-aware, into a new string</td></tr>
 <tr><td align="center"><a href="ft_striteri.c"><code>ft_striteri</code></a></td><td>Apply a function to each character in place, index-aware</td></tr>
 
-<tr><td colspan="2" align="right"><img src="https://img.shields.io/badge/-Memory%20Management-63212a?style=flat" alt="Memory management" /></td></tr>
+<tr><td colspan="2" align="right"><table cellpadding="6" cellspacing="0" align="right"><tr><td><h4>Memory Management</h4></td></tr></table></td></tr>
 <tr><td align="center"><a href="ft_memset.c"><code>ft_memset</code></a></td><td>Fill a memory area with a byte value</td></tr>
 <tr><td align="center"><a href="ft_bzero.c"><code>ft_bzero</code></a></td><td>Zero a memory area</td></tr>
 <tr><td align="center"><a href="ft_memcpy.c"><code>ft_memcpy</code></a></td><td>Copy a non-overlapping memory area</td></tr>
@@ -162,13 +162,13 @@ LIBFT/
 <tr><td align="center"><a href="ft_memcmp.c"><code>ft_memcmp</code></a></td><td>Compare two memory areas</td></tr>
 <tr><td align="center"><a href="ft_calloc.c"><code>ft_calloc</code></a></td><td>Allocate zero-initialized memory</td></tr>
 
-<tr><td colspan="2" align="right"><img src="https://img.shields.io/badge/-Conversions-63212a?style=flat" alt="Conversions" /></td></tr>
+<tr><td colspan="2" align="right"><table cellpadding="6" cellspacing="0" align="right"><tr><td><h4>Conversions</h4></td></tr></table></td></tr>
 <tr><td align="center"><a href="ft_atoi.c"><code>ft_atoi</code></a></td><td>String to <code>int</code></td></tr>
 <tr><td align="center"><a href="ft_atol.c"><code>ft_atol</code></a></td><td>String to <code>long</code></td></tr>
 <tr><td align="center"><a href="ft_itoa.c"><code>ft_itoa</code></a></td><td><code>int</code> to a heap-allocated string</td></tr>
 <tr><td align="center"><a href="ft_tolower.c"><code>ft_tolower</code></a> / <a href="ft_toupper.c"><code>ft_toupper</code></a></td><td>Case conversion</td></tr>
 
-<tr><td colspan="2" align="right"><img src="https://img.shields.io/badge/-Output%20(File--Descriptor%20Based)-63212a?style=flat" alt="Output (file-descriptor based)" /></td></tr>
+<tr><td colspan="2" align="right"><table cellpadding="6" cellspacing="0" align="right"><tr><td><h4>Output (File-Descriptor Based)</h4></td></tr></table></td></tr>
 <tr><td align="center"><a href="ft_putchar_fd.c"><code>ft_putchar_fd</code></a></td><td>Write a character</td></tr>
 <tr><td align="center"><a href="ft_putstr_fd.c"><code>ft_putstr_fd</code></a></td><td>Write a string</td></tr>
 <tr><td align="center"><a href="ft_putendl_fd.c"><code>ft_putendl_fd</code></a></td><td>Write a string followed by <code>\n</code></td></tr>
@@ -178,7 +178,7 @@ LIBFT/
 <tr><td align="center"><a href="ft_puthex.c"><code>ft_puthex</code></a></td><td>Write a value in hexadecimal</td></tr>
 <tr><td align="center"><a href="ft_putptr.c"><code>ft_putptr</code></a></td><td>Write a pointer address</td></tr>
 
-<tr><td colspan="2" align="right"><img src="https://img.shields.io/badge/-Linked%20List%20(Bonus)-63212a?style=flat" alt="Linked list (bonus)" /></td></tr>
+<tr><td colspan="2" align="right"><table cellpadding="6" cellspacing="0" align="right"><tr><td><h4>Linked List (Bonus)</h4></td></tr></table></td></tr>
 <tr><td align="center"><a href="ft_lstnew_bonus.c"><code>ft_lstnew</code></a></td><td>Allocate a new node</td></tr>
 <tr><td align="center"><a href="ft_lstadd_front_bonus.c"><code>ft_lstadd_front</code></a> / <a href="ft_lstadd_back_bonus.c"><code>ft_lstadd_back</code></a></td><td>Insert at the head / tail</td></tr>
 <tr><td align="center"><a href="ft_lstsize_bonus.c"><code>ft_lstsize</code></a></td><td>Count nodes</td></tr>
@@ -188,7 +188,7 @@ LIBFT/
 <tr><td align="center"><a href="ft_lstiter_bonus.c"><code>ft_lstiter</code></a></td><td>Apply a function to every node</td></tr>
 <tr><td align="center"><a href="ft_lstmap_bonus.c"><code>ft_lstmap</code></a></td><td>Build a new list by mapping a function over an existing one</td></tr>
 
-<tr><td colspan="2" align="right"><img src="https://img.shields.io/badge/-Extras%20(Beyond%20the%20Subject)-63212a?style=flat" alt="Extras (beyond the subject)" /></td></tr>
+<tr><td colspan="2" align="right"><table cellpadding="6" cellspacing="0" align="right"><tr><td><h4>Extras (Beyond the Subject)</h4></td></tr></table></td></tr>
 <tr><td align="center"><a href="ft_swap.c"><code>ft_swap</code></a></td><td>Swap two integers</td></tr>
 <tr><td align="center"><a href="ft_split_free.c"><code>ft_split_free</code></a></td><td>Free a <code>NULL</code>-terminated array produced by <code>ft_split</code></td></tr>
 <tr><td align="center"><a href="GNL/get_next_line.c"><code>get_next_line</code></a></td><td>Read a file descriptor line by line (<a href="https://github.com/Nesplee/GNL">separate 42 project</a>)</td></tr>
