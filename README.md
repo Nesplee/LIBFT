@@ -173,7 +173,7 @@ LIBFT/
 <tr><td align="center"><a href="ft_putstr_fd.c"><code>ft_putstr_fd</code></a></td><td>Write a string</td></tr>
 <tr><td align="center"><a href="ft_putendl_fd.c"><code>ft_putendl_fd</code></a></td><td>Write a string followed by <code>\n</code></td></tr>
 <tr><td align="center"><a href="ft_putnbr_fd.c"><code>ft_putnbr_fd</code></a></td><td>Write an <code>int</code> in base 10</td></tr>
-<tr><td align="center"><code>ft_putchar</code> / <code>ft_putstr</code> / <code>ft_putnbr</code></td><td>Convenience wrappers writing to <code>stdout</code></td></tr>
+<tr><td align="center"><a href="ft_putchar.c"><code>ft_putchar</code></a> / <a href="ft_putstr.c"><code>ft_putstr</code></a> / <a href="ft_putnbr.c"><code>ft_putnbr</code></a></td><td>Convenience wrappers writing to <code>stdout</code></td></tr>
 <tr><td align="center"><a href="ft_putunbr.c"><code>ft_putunbr</code></a></td><td>Write an <code>unsigned int</code></td></tr>
 <tr><td align="center"><a href="ft_puthex.c"><code>ft_puthex</code></a></td><td>Write a value in hexadecimal</td></tr>
 <tr><td align="center"><a href="ft_putptr.c"><code>ft_putptr</code></a></td><td>Write a pointer address</td></tr>
